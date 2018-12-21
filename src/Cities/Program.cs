@@ -11,10 +11,21 @@ namespace Cities
             List<City> cities = CityDataImporter.LoadData();
 
             // TODO Swap out comparers as desired
-            IComparer<City> comparer = new NameComparer();
+            IComparer<City> nameComparer = new NameComparer();
+            IComparer<City> stateComparer = new StateComparer();
+            IComparer<City> populationComparer = new PopulationComparer();
+            IComparer<City> areaComparer = new AreaComparer();
 
-            cities.Sort(comparer);
+            cities.Sort(nameComparer);
+            PrintCities(cities);
 
+            cities.Sort(stateComparer);
+            PrintCities(cities);
+
+            cities.Sort(populationComparer);
+            PrintCities(cities);
+
+            cities.Sort(areaComparer);
             PrintCities(cities);
 
             Console.ReadLine();
@@ -28,6 +39,8 @@ namespace Cities
             {
                 Console.WriteLine(city);
             }
+
+            Console.WriteLine();
 
         }
     }
